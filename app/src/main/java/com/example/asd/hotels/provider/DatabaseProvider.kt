@@ -35,7 +35,14 @@ class hotelReaderDbHelper(context: Context) : SQLiteOpenHelper(
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         // This database is only a cache for online data, so its upgrade policy is
         // to simply to discard the data and start over
-        db.execSQL(DBName.SQL_DELETE_ENTRIES)
+        db.execSQL(DBName.SQL_DELETE_HOTEL)
+        db.execSQL(DBName.SQL_DELETE_CUSTOMER)
+        db.execSQL(DBName.SQL_DELETE_RATING)
+        db.execSQL(DBName.SQL_DELETE_CATEGORY)
+        db.execSQL(DBName.SQL_DELETE_ACTIVITY)
+        db.execSQL(DBName.SQL_DELETE_ACTIVITY_AVAILABILITY)
+        db.execSQL(DBName.SQL_DELETE_USER)
+        db.execSQL(DBName.SQL_DELETE_PHOTOGALLERY)
         onCreate(db)
     }
 
