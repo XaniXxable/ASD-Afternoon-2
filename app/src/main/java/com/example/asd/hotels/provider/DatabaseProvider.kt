@@ -102,6 +102,15 @@ class DatabaseProvider(context: Context) {
     fun delete_db(){
         val db = dbHelper.readableDatabase
         db.execSQL(DBName.SQL_DELETE_ENTRIES)
+        db.execSQL(DBName.CREATE_LOCATION_TABLE)
+        db.execSQL(DBName.CREATE_ACTIVITY_AVAILABILITY_TABLE)
+        db.execSQL(DBName.CREATE_ACTIVITY_TABLE)
+        db.execSQL(DBName.CREATE_CATEGORY_TABLE)
+        db.execSQL(DBName.CREATE_CUSTOMER_TABLE)
+        db.execSQL(DBName.CREATE_HOTEL_TABLE)
+        db.execSQL(DBName.CREATE_PHOTOGALLERY_TABLE)
+        db.execSQL(DBName.CREATE_RATING_TABLE)
+        db.execSQL(DBName.CREATE_USER_TABLE)
     }
 
     fun get_location(id: Int): String {
