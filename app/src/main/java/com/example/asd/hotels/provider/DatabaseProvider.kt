@@ -99,6 +99,11 @@ class DatabaseProvider(context: Context) {
         val newRowId = db?.insert(DBName.HOTEL_TABLE_NAME, null, values)
     }
 
+    fun delete_db(){
+        val db = dbHelper.readableDatabase
+        db.execSQL(DBName.SQL_DELETE_ENTRIES)
+    }
+
     fun get_location(id: Int): String {
         val db = dbHelper.readableDatabase
 
