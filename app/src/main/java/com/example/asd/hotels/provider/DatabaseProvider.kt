@@ -60,6 +60,12 @@ class hotelReaderDbHelper(context: Context) : SQLiteOpenHelper(
 class DatabaseProvider(context: Context) {
     val dbHelper = hotelReaderDbHelper(context)
 
+    fun clearDbAndRecreate(){
+        val db = dbHelper.writableDatabase
+        onCreate(db)
+    }
+    
+
     fun insert_location(location_name: String): Long? {
         val db = dbHelper.writableDatabase
         // Create a new map of values, where column names are the keys
