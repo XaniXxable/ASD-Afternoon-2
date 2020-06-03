@@ -33,6 +33,8 @@ class MainActivity : AppCompatActivity() {
         try {
             val connectMySql = DatabaseProvider(this)
 
+            connectMySql.delete_db()
+
             connectMySql.insert_location("Alpha")
             connectMySql.insert_location("Beta")
             connectMySql.insert_location("Charlie")
