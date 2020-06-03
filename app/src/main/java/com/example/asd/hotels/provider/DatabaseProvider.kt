@@ -12,7 +12,15 @@ class hotelReaderDbHelper(context: Context) : SQLiteOpenHelper(
 ) {
 
     override fun onCreate(db: SQLiteDatabase) {
-        db.execSQL(DBName.SQL_DELETE_ENTRIES)
+        db.execSQL(DBName.SQL_DELETE_HOTEL)
+        db.execSQL(DBName.SQL_DELETE_CUSTOMER)
+        db.execSQL(DBName.SQL_DELETE_RATING)
+        db.execSQL(DBName.SQL_DELETE_CATEGORY)
+        db.execSQL(DBName.SQL_DELETE_ACTIVITY)
+        db.execSQL(DBName.SQL_DELETE_ACTIVITY_AVAILABILITY)
+        db.execSQL(DBName.SQL_DELETE_USER)
+        db.execSQL(DBName.SQL_DELETE_PHOTOGALLERY)
+
         db.execSQL(DBName.CREATE_LOCATION_TABLE)
         db.execSQL(DBName.CREATE_ACTIVITY_AVAILABILITY_TABLE)
         db.execSQL(DBName.CREATE_ACTIVITY_TABLE)
@@ -101,16 +109,7 @@ class DatabaseProvider(context: Context) {
 
     fun delete_db(){
         val db = dbHelper.readableDatabase
-        db.execSQL(DBName.SQL_DELETE_ENTRIES)
-        db.execSQL(DBName.CREATE_LOCATION_TABLE)
-        db.execSQL(DBName.CREATE_ACTIVITY_AVAILABILITY_TABLE)
-        db.execSQL(DBName.CREATE_ACTIVITY_TABLE)
-        db.execSQL(DBName.CREATE_CATEGORY_TABLE)
-        db.execSQL(DBName.CREATE_CUSTOMER_TABLE)
-        db.execSQL(DBName.CREATE_HOTEL_TABLE)
-        db.execSQL(DBName.CREATE_PHOTOGALLERY_TABLE)
-        db.execSQL(DBName.CREATE_RATING_TABLE)
-        db.execSQL(DBName.CREATE_USER_TABLE)
+        db.onCreate()
     }
 
     fun get_location(id: Int): String {
